@@ -3,14 +3,21 @@
 
 <head>
   <meta charset="UTF-8">
-  <title>wavy lines</title>
+  <title>UTheme</title>
   <style>
+    * {
+      user-select: none;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+    }
+
     body {
       width: 100vw;
       height: 100vh;
       margin: 0;
       padding: 0;
-      background: radial-gradient(ellipse at top, #1e3a5f 0%, #1a1a2e 50%, #0f0f1e 100%);
+      background: #1a1a2e;
       overflow: hidden;
     }
 
@@ -51,6 +58,10 @@
       z-index: 10;
     }
 
+    .title .u-letter {
+      color: #60c5f1;
+    }
+
     .subtitle {
       position: absolute;
       top: 40%;
@@ -78,22 +89,90 @@
       z-index: 10;
     }
 
+    /* 移动端适配 */
+    @media (max-width: 768px) {
+      .title {
+        font-size: 56px;
+        letter-spacing: 4px;
+      }
+
+      .subtitle {
+        font-size: 17px;
+        letter-spacing: 1.2px;
+        transform: translate(-50%, 60px);
+        padding: 0 20px;
+      }
+
+      .buttons {
+        flex-direction: column;
+        gap: 18px;
+        transform: translate(-50%, 130px);
+        width: calc(100% - 40px);
+        max-width: 350px;
+      }
+
+      .btn {
+        padding: 15px 35px;
+        font-size: 15px;
+        width: 100%;
+        text-align: center;
+      }
+
+      .footer {
+        font-size: 12px;
+        bottom: 20px;
+        text-align: center;
+        padding: 0 20px;
+        line-height: 1.5;
+      }
+
+      .history-link {
+        font-size: 11px;
+        padding: 5px 14px;
+        margin-top: 8px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .title {
+        font-size: 42px;
+        letter-spacing: 3px;
+      }
+
+      .subtitle {
+        font-size: 15px;
+        transform: translate(-50%, 55px);
+      }
+
+      .buttons {
+        transform: translate(-50%, 115px);
+      }
+
+      .btn {
+        padding: 14px 30px;
+        font-size: 14px;
+      }
+
+      .history-link {
+        font-size: 10px;
+        padding: 5px 12px;
+      }
+    }
+
     .btn {
       padding: 14.4px 40.5px;
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       font-size: 16.2px;
       font-weight: 500;
       color: #ffffff;
-      background: rgba(255, 255, 255, 0.08);
-      border: 1.5px solid rgba(255, 255, 255, 0.2);
+      background: rgba(255, 255, 255, 0.15);
+      border: 1.5px solid rgba(255, 255, 255, 0.3);
       border-radius: 50px;
-      backdrop-filter: blur(30px) saturate(180%);
-      -webkit-backdrop-filter: blur(30px) saturate(180%);
       cursor: pointer;
       transition: all 0.3s ease;
       text-decoration: none;
       display: inline-block;
-      box-shadow: 0 8px 32px rgba(31, 38, 135, 0.37), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
       letter-spacing: 1px;
       position: relative;
       overflow: hidden;
@@ -111,12 +190,10 @@
     }
 
     .btn:hover {
-      background: rgba(255, 255, 255, 0.15);
-      border-color: rgba(255, 255, 255, 0.4);
+      background: rgba(255, 255, 255, 0.25);
+      border-color: rgba(255, 255, 255, 0.5);
       transform: translateY(-2px);
-      box-shadow: 0 12px 40px rgba(31, 38, 135, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.2);
-      backdrop-filter: blur(35px) saturate(200%);
-      -webkit-backdrop-filter: blur(35px) saturate(200%);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
     }
 
     .btn:active {
@@ -134,6 +211,7 @@
       color: rgba(255, 255, 255, 0.6);
       z-index: 10;
       letter-spacing: 0.5px;
+      text-align: center;
     }
 
     .footer a {
@@ -146,18 +224,48 @@
     .footer a:hover {
       color: #ffffff;
     }
+
+    .history-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      margin-top: 10px;
+      padding: 6px 16px;
+      font-size: 12px;
+      color: rgba(255, 255, 255, 0.65);
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 20px;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      font-weight: 400;
+      letter-spacing: 0.5px;
+    }
+
+    .history-link::before {
+      content: '📦';
+      font-size: 12px;
+    }
+
+    .history-link:hover {
+      color: #60c5f1;
+      background: rgba(96, 197, 241, 0.12);
+      border-color: rgba(96, 197, 241, 0.25);
+      transform: translateY(-2px);
+    }
   </style>
 </head>
 
 <body>
-  <h1 class="title">UTheme</h1>
+  <h1 class="title"><span class="u-letter">U</span>Theme</h1>
   <p class="subtitle">An all-in-one theme downloader for your Wii U</p>
   <div class="buttons">
-    <a href="#" class="btn">Download (.wuhb)</a>
-    <a href="#" class="btn">View Source Code</a>
+    <a href="https://github.com/xziip/utheme/releases/download/V0.1B/UTheme.wuhb" class="btn">Download (.wuhb)</a>
+    <a href="https://github.com/xziip/UTheme" class="btn" target="_blank">View Source Code</a>
   </div>
   <div class="footer">
-    UTheme powered by <a href="https://themezer.net" target="_blank">Themezer</a> API
+    <div>UTheme powered by <a href="https://themezer.net" target="_blank">Themezer</a> API</div>
+    <a href="history.html" class="history-link">Download Previous Versions</a>
   </div>
   <a-waves>
     <svg></svg>
@@ -165,8 +273,6 @@
 </body>
 
 <script>
-  // JIEJOE produce
-  // b站主页：https://space.bilibili.com/3546390319860710
   class AWaves extends HTMLElement {
     connectedCallback() {
       this.svg = this.querySelector('svg')
@@ -179,6 +285,7 @@
         ly: window.innerHeight / 2,
         v: 0
       }
+      this.animationProgress = 0 // 用于控制海浪升起动画
 
       this.bindEvents()
       this.setSize()
@@ -243,10 +350,12 @@
           path: path,
           amplitude: 20 + i * 8,
           frequency: 0.004 + i * 0.0008,
-          speed: 0.02 + i * 0.01,
+          speed: 0.06 + i * 0.03, // 增加速度（原来是 0.02 + i * 0.01）
           yOffset: this.height * 0.85 - i * 60,
+          initialYOffset: this.height + 100, // 初始位置在屏幕下方
           points: points,
-          index: i
+          index: i,
+          delay: i * 0.15 // 每层延迟0.15秒（原来是0.3秒）
         })
       }
     }
@@ -260,9 +369,14 @@
       // 收集所有点的Y坐标
       const yCoords = []
       
+      // 计算当前Y偏移（带升起动画和延迟）
+      const delayedProgress = Math.max(0, this.animationProgress - wave.delay)
+      const easedProgress = this.easeOutCubic(Math.min(delayedProgress, 1))
+      const currentYOffset = wave.initialYOffset + (wave.yOffset - wave.initialYOffset) * easedProgress
+      
       wave.points.forEach((point, i) => {
         // 基础波浪
-        let y = wave.yOffset + 
+        let y = currentYOffset + 
                 Math.sin((point.x * wave.frequency) + (time * wave.speed)) * wave.amplitude +
                 Math.sin((point.x * wave.frequency * 1.5) - (time * wave.speed * 0.7)) * (wave.amplitude * 0.3)
         
@@ -316,8 +430,19 @@
       
       wave.path.setAttribute('d', pathData)
     }
+    
+    // 缓动函数
+    easeOutCubic(t) {
+      return 1 - Math.pow(1 - t, 3)
+    }
+    
     tick(time) {
       this.time += 0.05
+      
+      // 升起动画（稍快的速度，考虑延迟总共约3秒完成）
+      if (this.animationProgress < 2.5) {
+        this.animationProgress += 0.01
+      }
       
       // 计算鼠标速度
       const dx = this.mouse.x - this.mouse.lx
